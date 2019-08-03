@@ -12,6 +12,13 @@ const initialState = {
   tasks: []
 };
 
+const addTask = (task) => ({
+  type: "ADD_TASK",
+  payload: {
+    task
+  }
+});
+
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_TASK":
