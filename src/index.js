@@ -13,6 +13,19 @@ const initialState = {
   tasks: []
 };
 
+//tasksReducerを定義
+const store = createStore(tasksReducer);
+
+function handleChange() {
+  console.log(store.getState());
+  //{
+  // tasks["Storeを学ぶ"]
+  //}
+}
+
+const unsubscribe = store.subscribe(handleChange)
+//unsbscribe()を実行すると解除される
+
 const addTask = (task) => ({
   type: "ADD_TASK",
   payload: {
@@ -21,11 +34,6 @@ const addTask = (task) => ({
 });
 
 store.dispatch(addTask("Storeを学ぶ"));
-
-console.log(store.getState())
-
-//tasksReducerを定義
-const store = createStore(tasksReducer);
 
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
