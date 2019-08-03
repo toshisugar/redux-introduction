@@ -20,6 +20,10 @@ const addTask = (task) => ({
   }
 });
 
+store.dispatch(addTask("Storeを学ぶ"));
+
+console.log(store.getState())
+
 //tasksReducerを定義
 const store = createStore(tasksReducer);
 
