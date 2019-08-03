@@ -20,6 +20,7 @@ const addTask = (task) => ({
   }
 });
 
+//tasksReducerを定義
 const store = createStore(tasksReducer);
 
 function tasksReducer(state = initialState, action) {
