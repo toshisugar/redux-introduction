@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import { createStore } from 'redux';
 
 ReactDOM.render(
   <App />,
@@ -18,6 +19,8 @@ const addTask = (task) => ({
     task
   }
 });
+
+const store = createStore(tasksReducer);
 
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
