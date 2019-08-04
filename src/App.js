@@ -35,4 +35,16 @@ function addReducer(state = initialState, action) {
   }
 }
 
+function reserReducer(state = initialState, action) {
+  switch (action.type) {
+    case "RESET_TASK":
+      return {
+        ...state,
+        tasks: []
+      };
+    default:
+      return state;
+  }
+}
+
 export default App;
