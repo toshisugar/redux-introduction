@@ -81,3 +81,10 @@ function TodoApp({ store }) {
     </div>
   );
 }
+
+function renderApp(store) {
+  render(
+    <TodoApp store={store} />,
+    document.getElementById('root')
+  );
+}
