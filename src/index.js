@@ -5,10 +5,10 @@ import './index.css';
 import { createStore } from 'redux';
 import { render } from 'react-dom';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
 
 const initialState = {
   task: "",
@@ -88,3 +88,5 @@ function renderApp(store) {
     document.getElementById('root')
   );
 }
+
+store.subscribe(() => renderApp(store));
