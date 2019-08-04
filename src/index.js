@@ -1,14 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import { createStore } from 'redux';
 import { render } from 'react-dom';
-
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root')
-// );
+import { createStore } from 'redux';
 
 const initialState = {
   task: "",
@@ -16,34 +8,6 @@ const initialState = {
 };
 
 //tasksReducerを定義
-const store = createStore(tasksReducer);
-
-function handleChange() {
-  console.log(store.getState());
-  //{
-  // tasks["Storeを学ぶ"]
-  //}
-}
-
-const unsubscribe = store.subscribe(handleChange)
-//unsbscribe()を実行すると解除される
-
-const addTask = (task) => ({
-  type: "ADD_TASK",
-  payload: {
-    task
-  }
-});
-
-store.dispatch(addTask("Storeを学ぶ"));
-
-const inputTask = (task) => ({
-  type: "INPUT_TASK",
-  payload: {
-    task
-  }
-});
-
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
     case "INPUT_TASK":
@@ -61,8 +25,25 @@ function tasksReducer(state = initialState, action) {
   }
 }
 
+
+const store = createStore(tasksReducer);
+
+const inputTask = (task) => ({
+  type: "INPUT_TASK",
+  payload: {
+    task
+  }
+});
+
+const addTask = (task) => ({
+  type: "ADD_TASK",
+  payload: {
+    task
+  }
+});
+
 function TodoApp({ store }) {
-  const { task, tasks } = store.getState;
+  const { task, tasks } = store.getState();
   return (
     <div>
       <input type="text" onChange={(e) => store.dispatch(inputTask(e.target.value))} />
@@ -90,3 +71,4 @@ function renderApp(store) {
 }
 
 store.subscribe(() => renderApp(store));
+renderApp(store);
