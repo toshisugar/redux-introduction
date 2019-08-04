@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import { createStore } from 'redux';
+import { render } from 'react-dom';
 
 ReactDOM.render(
   <App />,
@@ -58,4 +59,25 @@ function tasksReducer(state = initialState, action) {
     default:
       return state;
   }
+}
+
+function TodoApp({ store }) {
+  const { task, tasks } = store.getState;
+  return (
+    <div>
+      <input type="text" onChange={(e) => store.dispatch(inputTask(e.target.value))} />
+      <input type="button" value="add" onClick={() => store.dispatch(addTask(task))} />
+      <ul>
+        {
+          tasks.map(function (item, i) {
+            return (
+              <li key={i}>
+                {item}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  );
 }
