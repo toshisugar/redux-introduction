@@ -10,6 +10,7 @@ ReactDOM.render(
 );
 
 const initialState = {
+  task: "",
   tasks: []
 };
 
