@@ -6,8 +6,8 @@ import tasksReducer from './reducers/tasks';
 import TodoApp from './containers/TodoApp';
 
 const store = createStore(
-  reducer,
-  applyMddleware(loger)
+  tasksReducer,
+  applyMiddleware(logger)
 );
 
 
