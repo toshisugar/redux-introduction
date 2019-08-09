@@ -6,12 +6,23 @@ import { render } from 'react-dom';
 import tasksReducer from './reducers/tasks';
 import TodoApp from './containers/TodoApp';
 
-//高頻度で発生するActionをログに落とさないように例外として指定 => これ、getState必要か
-const loggerSetting = {
-  predicate: (getState, action) => action.type !== "HIGH_FREQUENCY_ACTION"
-};
 
-const logger = createLogger(loggerSetting);
+const logger = store => next => action => {
+  //action適応後のstateを表示
+  console.log(store.getState());
+
+  //どのようなActionが適応されたのかを表示
+  console.log(action);
+
+  const result = next(action);
+
+  //Action適用後のstateを表示
+  console.log(store.getState());
+  console.log("--------------");
+
+  //特別な値をreturnする必要はないのでresultをそのまま返す
+  return result;
+}
 
 //設定を元にloggerミドルウェアを作成
 const store = createStore(
