@@ -41,6 +41,7 @@ const store = createStore(
   複数のenhancerを合成する必要がある。
   合成に必要なcompose関数はReduxが提供している。
   */
+  //参考演算子：saveStateの中身がtrueだったらsaveStateを返す、falseだったら、：以降を返す
   savedState ? savedState : tasksReducer(undefined, { type: 'INT' }),
   applyMiddleware(logger, storageMiddleware)
 );
