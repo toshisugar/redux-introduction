@@ -51,3 +51,21 @@ export function asyncAddTodo(title) {
         });
     };
 }
+
+/*Async/Await：注意点 => asyncオペレーターの位置をエクスポートする関数ではなく、リターンする関数につける
+//通常
+const sleep1000ms = () => {
+     ...
+};
+
+export function addTodo(title) {
+    ...
+}
+//Async/Await版
+export function asyncAddTodo(title) {
+    return async (dispatch) => {
+        await sleep1000ms();
+        dispatch(addTodo(title));
+    };
+}
+*/
