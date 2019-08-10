@@ -30,6 +30,8 @@ const storageMiddleware = store => next => action => {
   return result;
 };
 
+const savedState = JSON.parse(localStorage.getItem('app-state'));
+
 //設定を元にloggerミドルウェアを作成
 const store = createStore(
   tasksReducer,
