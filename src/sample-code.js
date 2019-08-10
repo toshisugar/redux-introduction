@@ -21,3 +21,33 @@ export function asyncAddRodo(title) {
     };
 }
 */
+
+/*Promiseの例
+*/
+const sleep1000ms = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    })
+};
+
+//通常
+export function addTodo(title) {
+    return {
+        type: types.ADD_TODO,
+        payload: {
+            id: shortid.generate(),
+            title,
+        },
+    };
+}
+
+//Promise版
+export function asyncAddTodo(title) {
+    return (dispatch) => {
+        sleep1000ms().then(() => {
+            dispatch(addTodo(titke));
+        });
+    };
+}
