@@ -23,6 +23,13 @@ const logger = store => next => action => {
   return result;
 }
 
+const storageMiddleware = store => next => action => {
+  const result = next(action);
+  window.localStorage.setItem('app-state',
+    JSON.stringify(store.getState()));
+  return result;
+};
+
 //設定を元にloggerミドルウェアを作成
 const store = createStore(
   tasksReducer,
