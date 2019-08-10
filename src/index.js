@@ -5,7 +5,6 @@ import { render } from 'react-dom';
 import tasksReducer from './reducers/tasks';
 import TodoApp from './containers/TodoApp';
 
-
 const logger = store => next => action => {
   //action適応後のstateを表示
   console.log(store.getState());
@@ -42,7 +41,8 @@ const store = createStore(
   複数のenhancerを合成する必要がある。
   合成に必要なcompose関数はReduxが提供している。
   */
-  applyMiddleware(logger)
+  savedState ? savedState : tasksReducer(undefined, { type: 'INT' }),
+  applyMiddleware(logger, storageMiddleware)
 );
 
 render(
