@@ -23,7 +23,6 @@ export function asyncAddRodo(title) {
 */
 
 /*Promiseの例
-*/
 const sleep1000ms = () => {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -32,7 +31,7 @@ const sleep1000ms = () => {
     })
 };
 
-//通常
+//addTodo func
 export function addTodo(title) {
     return {
         type: types.ADD_TODO,
@@ -43,7 +42,7 @@ export function addTodo(title) {
     };
 }
 
-//Promise版
+//PromiseでaddTodo func を呼び出す
 export function asyncAddTodo(title) {
     return (dispatch) => {
         sleep1000ms().then(() => {
@@ -51,6 +50,7 @@ export function asyncAddTodo(title) {
         });
     };
 }
+*/
 
 /*Async/Await：注意点 => asyncオペレーターの位置をエクスポートする関数ではなく、リターンする関数につける
 //sleep1000ms func
