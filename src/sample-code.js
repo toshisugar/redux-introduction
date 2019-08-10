@@ -53,7 +53,7 @@ export function asyncAddTodo(title) {
 }
 
 /*Async/Await：注意点 => asyncオペレーターの位置をエクスポートする関数ではなく、リターンする関数につける
-//通常
+//sleep1000ms func
 const sleep1000ms = () => {
      ...
 };
@@ -61,7 +61,7 @@ const sleep1000ms = () => {
 export function addTodo(title) {
     ...
 }
-//Async/Await版
+//Async/Awaitでsleepfunc を呼び出す
 export function asyncAddTodo(title) {
     return async (dispatch) => {
         await sleep1000ms();
