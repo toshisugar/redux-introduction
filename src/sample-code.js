@@ -69,3 +69,30 @@ export function asyncAddTodo(title) {
     };
 }
 */
+
+/*複数のアクションのまとめ方
+function addTodo(title) {
+    return {
+        type: types.ADD_TODO,
+        payload: {
+            id: shortid.generate(),
+            title,
+        },
+    };
+}
+function updateInput(value) {
+    return {
+        type: types.UPDATE_INPUT,
+        payload: {
+            value,
+        },
+    };
+}
+//このようにまとめる
+export function addTodoAndClear(title) {
+    return (dispatch) => {
+        dispatch(addTodo(title));
+        dispatch(updateInput(''));
+    };
+}
+*/
