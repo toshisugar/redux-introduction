@@ -96,3 +96,29 @@ export function addTodoAndClear(title) {
     };
 }
 */
+
+/*登録済のTodoを追加しないようにする
+ */
+//title：今回入力したTodo
+//todos:これまでに入力されているTodo
+export function addUniqueTodo(title) {
+    return (dispatch, getState) => {
+        const {
+            todo: {
+                todos,
+            },
+        } = getState();
+
+        //stateに保存されたTodoに同一のタイトルがあったら登録済で再追加せず
+        const isDuplicated = todos.some(todo => todo.title === title);
+
+        var func = function (todo) {
+            return todo.title === title;
+        }
+
+        if (isDuplicated) {
+            return;
+        }
+        dispatch(addTodo(title));
+    };
+}
