@@ -35,6 +35,13 @@ const addTask = (task) => ({
 
 store.dispatch(addTask("Storeを学ぶ"));
 
+const inputTask = (task) => ({
+  type: "INPUT_TASK",
+  payload: {
+    task
+  }
+});
+
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_TASK":
