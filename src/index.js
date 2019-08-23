@@ -5,7 +5,11 @@ import { render } from 'react-dom';
 import tasksReducer from './reducers/tasks';
 import TodoApp from './containers/TodoApp';
 
-const store = createStore(tasksReducer);
+const store = createStore(
+  reducer,
+  applyMddleware(loger)
+);
+
 
 import logger from 'redux-logger';
 
