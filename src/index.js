@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
 import { render } from 'react-dom';
 import tasksReducer from './reducers/tasks';
 import TodoApp from './containers/TodoApp';
